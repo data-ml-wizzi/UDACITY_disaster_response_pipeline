@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
 
-def load_data(messages_filepath, categories_filepath):
+def load_data(messages_filepath: str, categories_filepath: str)-> pd.DataFrame:
     """
     Load Messages and Categories from filepaths and merge them into a DataFrame
     
@@ -26,7 +26,7 @@ def load_data(messages_filepath, categories_filepath):
 
     return df
 
-def clean_data(df):
+def clean_data(df: pd.DataFrame)->pd.DataFrame:
     """ 
     The function cleans up the previously imported data. Data cleaning is carried out in four steps:
         1. Split categories into separate category columns.
@@ -72,7 +72,7 @@ def clean_data(df):
     # Return cleaned dataframe:
     return df
 
-def save_data(df, database_filename):
+def save_data(df: pd.DataFrame, database_filename: str):
     """ 
     Function to save the cleaned dataframe in a SQLite database.
         
