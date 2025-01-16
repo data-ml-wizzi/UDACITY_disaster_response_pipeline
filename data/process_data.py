@@ -50,20 +50,26 @@ def clean_data(df: pd.DataFrame)->pd.DataFrame:
     # Rename the columns of `categories`:
     categories.columns = category_colnames
     
+    
     # STEP 2: Convert category values to just numbers 0 or 1:
+    def replace_strings(text: str):
+        # all values not equal to 0, 1 become NaN's
+        return int(1) if '-1' in text else int(0) if '-0' in text else np.nan 
+
     for column in categories:
         # set each value to be the last character of the string
-        categories[column] = categories[column].str[-1]
+        categories[column] = categories[column].apply(replace_strings)
     
-        # convert column from string to numeric
-        categories[column] = categories[column].astype(int) 
-    
+    nan_rows = categories[categories.isna().any(axis=1)].index.tolist()
     
     # STEP 3: Replace categories column in the DataFrame with new category columns.
      # drop the original categories column from `df`
     df = df.drop(labels='categories', axis=1)
     # Concatenate the original dataframe with the new `categories` dataframe:
     df = pd.concat([df, categories], axis=1)
+
+    # STEP 3.5: Remove all nan-rows
+    df = df.drop(nan_rows)
     
     # STEP 4: Remove duplicates from the dataframe:
     # Drop duplicates:
