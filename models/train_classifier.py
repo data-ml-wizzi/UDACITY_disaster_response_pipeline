@@ -46,9 +46,10 @@ def tokenize(text):
     """
     Function to clean text massages. Data cleaning is carried out in four steps:
         1. Delete URLs
-        2. Tokenize text in words
-        3. Lemmatize tokenized words and Normalize
+        2. Normalize
+        3. Tokenize text in words
         4. Remove stop words
+        5. Lemmatize tokenized words and Normalize
     
     Parameter:
         text: The text string to be cleaned.
@@ -63,13 +64,16 @@ def tokenize(text):
     for url in detected_urls:
         text = text.replace(url, "urlplaceholder")
     
-    # Step 2: Tokenize text in words:
+    # Step 2: Normalize
+    text = re.sub(r"[^a-zA-Z0-9]", " ", text)
+
+    # Step 3: Tokenize text in words:
     tokens = word_tokenize(text)
 
-    # Step 3: Remove stop words
+    # Step 4: Remove stop words
     words = [t for t in tokens if t not in stopwords.words("english")]
     
-    # Step 4: Lemmatize tokenized words and Normalize:
+    # Step 5: Lemmatize tokenized words and Normalize:
     clean_tokens = []
     for word in words:
         clean_tok = WordNetLemmatizer().lemmatize(word).lower().strip()
@@ -91,8 +95,8 @@ def build_model():
     model = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
-        ('clf', MultiOutputClassifier(AdaBoostClassifier(learning_rate=0.1,
-                                                         n_estimators=10),
+        ('clf', MultiOutputClassifier(AdaBoostClassifier(learning_rate=0.2,
+                                                         n_estimators=100),
                                                          n_jobs=10))
     ])
     
@@ -101,7 +105,7 @@ def build_model():
 
 def evaluate_model(model, X_test, Y_test):
     """
-    Function to build the Machine Learning Model for prediction:
+    Function to evaluate the Machine Learning Model.
     
     Parameter:
         model: Builded Model
@@ -116,7 +120,8 @@ def evaluate_model(model, X_test, Y_test):
     y_pred = model.predict(X_test)
 
     # classification report on test data
-    print(classification_report(Y_test.values, y_pred,
+    print(classification_report(Y_test.values,
+                                y_pred,
                                 target_names=Y_test.columns.values))
     
     return
