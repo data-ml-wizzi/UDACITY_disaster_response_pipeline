@@ -45,6 +45,7 @@ The following two CSV files are provided:
 
 # File Descriptions <a name="files"></a>
 
+```
 app
  |--- templates
  |       |---go.html                    <- Classification results page of the web app
@@ -56,6 +57,7 @@ app
  |--- messages.csv
  |--- DisasterResponse.db
  |--- process_data.py
+ ```
 
 # Instructions <a name="instructions"></a>
 
