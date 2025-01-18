@@ -33,10 +33,9 @@ To achieve this first NLP (Natural Language Processing) has to be used to prepro
 </ul>
 
 # Data <a name="data"></a>
-The Data was provided bith Appen (former Figure8). Their datasets include roughly 26k messages of disasters all around the world as well as their categorization. 
+The Data was provided bith Appen (former Figure8). Their datasets include roughly 26k messages of disasters all around the world as well as their categorization. </br>
 
-</br>
-The following two CSV files are provided:
+The following two CSV files are provided:</br>
 
 <ul>
   <li>messages.csv: ~ 26k messages
@@ -67,6 +66,21 @@ app
 
 # Instructions <a name="instructions"></a>
 
+1. Clone or download the repo, open the terminal and navigate to the project folder
+
+2. Run the following commands in the project's root directory to set up your database and model.
+
+    - To run ETL pipeline that cleans data and stores in database</br>
+
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+
+    - To run ML pipeline that trains classifier and saves</br>
+        
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+3. Run your web app: `python app/run.py`
+
+4. Click the `PREVIEW` button to open the homepage via http://loclhost:3000 or http://127.0.0.1:3000
 
 
 # Results <a name="results"></a>
@@ -75,9 +89,3 @@ app
 
 
 
-To run ETL pipeline that cleans data and stores in database
-python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
-
-
-To run ML pipeline that trains classifier and saves
-python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
