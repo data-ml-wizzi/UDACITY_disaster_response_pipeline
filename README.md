@@ -72,7 +72,7 @@ app
 
     - To run ETL pipeline that cleans data and stores in database</br>
 
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        `python data/process_data.py data/messages.csv data/categories.csv data/DisasterResponse.db`
 
     - To run ML pipeline that trains classifier and saves</br>
         
@@ -84,8 +84,30 @@ app
 
 
 # Results <a name="results"></a>
+In the web app (Figure 1) the user can enter messages at the top, which are then classified based on the stored model. Below, various statistical evaluations of the training data are also shown:
+
+- Distribution of all messages according to genres ('news', 'direct', 'social') that where used for the training of the model
+- Distribution of all messages according to the 36 categories that where used for the training of the model
+- Distribution of the top five categories for all messages that where used for the training of the model
+
+<br>
+    <div align="center">
+	    <img src="https://github.com/data-ml-wizzi/UDACITY_disaster_response_pipeline/blob/main/app/app_screeni.png">
+    </div>
+    <div align="center">
+	    <i>Figure 1 – Screenshot of the Web-App</i>
+    </div>
+<br>
+
+
 
 # Licensing <a name="licensing"></a>
+Copyright 2025 data-ml-wizzi
 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
