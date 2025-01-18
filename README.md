@@ -53,13 +53,21 @@ app
  |--- run.py                            <- flask file that runs the app
 
  data
- |--- categories.csv
- |--- messages.csv
- |--- DisasterResponse.db
- |--- process_data.py
+ |--- categories.csv                    <- 36 categories for the ~26k messages
+ |--- messages.csv                      <- ~26k messages
+ |--- DisasterResponse.db               <- SQL Database for storing the cleaned data
+ |--- process_data.py                   <- script to process the data
+
+ jupyter                                <- Juypter Notebooks with the ETL and ML Pipelines
+
+ models
+ |--- classifier.pkl                    <- saved model
+ |--- train_classifier.py               <- script to train the classifier model
  ```
 
 # Instructions <a name="instructions"></a>
+
+
 
 # Results <a name="results"></a>
 
