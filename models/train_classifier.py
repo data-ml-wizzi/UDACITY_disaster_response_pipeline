@@ -32,7 +32,7 @@ def load_data(database_filepath):
     """
     
     # load data from database
-    engine = create_engine(f"sqlite:///{database_filepath}.db")
+    engine = create_engine(f"sqlite:///{database_filepath}")
     df = pd.read_sql('SELECT * FROM TAB_DR', engine)
 
 
