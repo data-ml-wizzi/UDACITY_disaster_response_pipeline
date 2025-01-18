@@ -91,7 +91,7 @@ def save_data(df: pd.DataFrame, database_filename: str):
     """    
     # Save the cleaned dataset as an sqlite database:
     engine = create_engine('sqlite:///'+database_filename)
-    df.to_sql('TAB_DR', engine, index=False, if_exists='replace')
+    df.to_sql('TAB_DR', engine, if_exists='replace', index=False,)
     
     return
 
