@@ -22,17 +22,27 @@ To achieve this first NLP (Natural Language Processing) has to be used to prepro
 # Installations <a name="installations"></a>
 
 <ul>
-    <li>pandas          ==2.2.3
-    <li>numpy           ==2.2.2
-    <li>ipykernel       ==6.29.5
-    <li>sqlalchemy      ==2.0.37
-    <li>nltk            ==3.9.1
-    <li>scikit-learn    ==1.6.1
-    <li>plotly          ==5.24.1
-    <li>flask           ==3.1.0
+    <li>pandas          == 2.2.3
+    <li>numpy           == 2.2.2
+    <li>ipykernel       == 6.29.5
+    <li>sqlalchemy      == 2.0.37
+    <li>nltk            == 3.9.1
+    <li>scikit-learn    == 1.6.1
+    <li>plotly          == 5.24.1
+    <li>flask           == 3.1.0
 </ul>
 
 # Data <a name="data"></a>
+The Data was provided bith Appen (former Figure8). Their datasets include roughly 26k messages of disasters all around the world as well as their categorization. 
+
+</br>
+The following two CSV files are provided:
+
+<ul>
+  <li>messages.csv: ~ 26k messages
+  <li>categories.csv: 36 disaster categories 
+</ul>
+
 
 # File Descriptions <a name="files"></a>
 
