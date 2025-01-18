@@ -43,8 +43,19 @@ The following two CSV files are provided:
   <li>categories.csv: 36 disaster categories 
 </ul>
 
-
 # File Descriptions <a name="files"></a>
+
+app
+ |--- templates
+ |       |---go.html                    <- Classification results page of the web app
+ |       |---master.html                <- Main page of the web app
+ |--- run.py                            <- flask file that runs the app
+
+ data
+ |--- categories.csv
+ |--- messages.csv
+ |--- DisasterResponse.db
+ |--- process_data.py
 
 # Instructions <a name="instructions"></a>
 
