@@ -1,34 +1,53 @@
+# import packages
 import json
 import plotly
 import pandas as pd
+import re
+from sqlalchemy import create_engine
+import joblib
+from plotly.graph_objs import Bar
 
-from nltk.stem import WordNetLemmatizer
+# import nltk stuff
+import nltk
+
+nltk.download(['punkt','stopwords', 'wordnet', 'punkt_tab'])
+
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from nltk.stem.wordnet import WordNetLemmatizer
 
+# import flask stuff
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
-from sklearn.externals import joblib
-from sqlalchemy import create_engine
 
 
 app = Flask(__name__)
 
 def tokenize(text):
-    #Stopword ergänzen!!! URL ergänzen usw...
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
+    
+    #Normalize Text
+    url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+    detected_urls = re.findall(url_regex, text)
+    for url in detected_urls:
+        text = text.replace(url, "urlplaceholder")
 
+    #Tokenize Text
+    tokens = word_tokenize(text)
+
+    #Remove Stopwords
+    words = [t for t in tokens if t not in stopwords.words("english")]
+
+    #Lemmatize
     clean_tokens = []
-    for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
+    for word in words:
+        clean_tok = WordNetLemmatizer().lemmatize(word).lower().strip()
         clean_tokens.append(clean_tok)
 
     return clean_tokens
 
 # load data
 engine = create_engine('sqlite:///../data/DisasterResponse.db')
-df = pd.read_sql_table('tab_DisasterResponse', engine)
+df = pd.read_sql_table('TAB_DR', engine)
 
 # load model
 model = joblib.load("../models/classifier.pkl")
