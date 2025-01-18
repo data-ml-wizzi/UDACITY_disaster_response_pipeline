@@ -9,7 +9,6 @@ This Project ist part of my "Data Science" Nanodegree on Udacity.
 3. [File Descriptions](#files)
 4. [Instructions](#instructions)
 5. [Results](#results)
-6. [Licensing](#licensing)
 
 
 # Project Motivation <a name="motivation"></a>
@@ -98,8 +97,4 @@ In the web app (Figure 1) the user can enter messages at the top, which are then
 	    <i>Figure 1 – Screenshot of the Web-App</i>
     </div>
 <br>
-
-
-
-# Licensing <a name="licensing"></a>
 
